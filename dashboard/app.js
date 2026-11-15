@@ -250,7 +250,7 @@
     writeHash();
     dialog.textContent = '';
     const recomputed = recomputeImplied(row);
-    const matches = recomputed === row.implied_value_usd;
+    const matches = Math.abs(recomputed - row.implied_value_usd) <= Math.max(1, row.implied_value_usd * 0.001);
     const cat = categoryInfo(row.category);
     const steps = (row.farm_steps || []).map((s) => {
       const at = s.indexOf(' Cost: ');
